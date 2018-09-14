@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Scrapper.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,40 +12,54 @@ using System.Threading.Tasks;
 namespace Scrapper.Services
 {
     public class RecipeScrapper
-    { 
+    {
         public async Task Run()
         {
-            string urlFormat = "https://www.allrecipes.com/recipe/{0}"; 
-            int id = 7750;
+            string urlFormat = "https://www.allrecipes.com/recipe/{0}";
+            string startId = (string)ConfigurationSettings.AppSettings["startId"];
+
+            if (!int.TryParse(startId, out int id))
+            {
+                Console.WriteLine("StartIdKey is missing or not an integer !");
+                Console.ReadKey();
+            }
+
+            Console.WriteLine("== Starting with id " + id);
 
             HttpClient client = new HttpClient();
 
             for (; id < int.MaxValue; id++)
             {
-                string url = string.Format(urlFormat, id);
-                var httpClient = new HttpClient();
-                var response = await httpClient.GetAsync(new Uri(url));
+                try
+                {
+                    string url = string.Format(urlFormat, id);
+                    var httpClient = new HttpClient();
+                    var response = await httpClient.GetAsync(new Uri(url));
 
-                if (response.IsSuccessStatusCode)
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"New page received for scrapping !");
-                    try
+                    if (response.IsSuccessStatusCode)
                     {
-                        Scrap(url, content);
+                        var content = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"New page received for scrapping !");
+                        try
+                        {
+                            Scrap(url, content);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error => " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("Error => " + ex.Message);
+                        Console.Write($"/{id} not found (404)");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.Write($"/{id} not found (404)");
-                }
+                    Console.Write("Error => " + ex.Message);
+                } 
             }
         }
-
 
         private HtmlNode GetNodeByClass(HtmlDocument document, string name)
         {
@@ -53,7 +68,6 @@ namespace Scrapper.Services
                   .Descendants()
                   .Where(x => x.Attributes.Contains("class") && x.Attributes["class"].Value.Contains(name)).FirstOrDefault();
         }
-
         private void Scrap(string url, string content)
         {
             HtmlDocument document = new HtmlDocument();
