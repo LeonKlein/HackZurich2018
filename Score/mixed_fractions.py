@@ -306,6 +306,3 @@ class Mixed(Fraction):
         if type(self) == Mixed:
             return self     # My components are also immutable
         return self.__class__(self.numerator, self.denominator)
-
-
-print(float(Mixed("1.2")))

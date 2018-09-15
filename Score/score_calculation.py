@@ -90,10 +90,10 @@ def calculate_score(ingredients, lookup_table):
             value3 = np.around(np.random.random(), decimals=2)
             score += value1 * calc_weight(ing)
             
-            with open(fref, mode='a', newline='') as csv_file:
+            """ with open(fref, mode='a', newline='') as csv_file:
                 fieldnames = [ing['ingredient'], value1, value2, value3]
                 writer = csv.writer(csv_file, delimiter=';')
-                writer.writerow(fieldnames)
+                writer.writerow(fieldnames) """
                 
     return score
 
@@ -103,14 +103,17 @@ costs_table = extract_cost_table(fref_name=fref)
 
 # Loop over recipes
 # Calculate score fore every recipe
-for recipe in recipes:
-    ingreds = regex_matching(recipe)
+def recipe_loop(recipes):
+    for recipe in recipes:
+        ingreds = regex_matching(recipe)
 
-    # get number of servings
-    servings = recipe['Servings']
-    url = recipe['Url']
-    score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
-    write_score(fscore, url, score)
-    print(score)
+        # get number of servings
+        servings = recipe['Servings']
+        url = recipe['Url']
+        score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
+        write_score(fscore, url, score)
+        print(score)
 
 #print (costs_table)
+
+#recipe_loop(recipes)
