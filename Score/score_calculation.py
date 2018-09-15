@@ -2,7 +2,7 @@ import json
 import csv
 import re
 import numpy as np
-from mixed_fractions import Mixed
+from Score.mixed_fractions import Mixed
 
 fname = "DataScrapper/tools/scrappedData.txt"
 fref = "Score/EnvironmentalData.csv"
@@ -124,4 +124,4 @@ def recipe_loop(recipes, costs_table):
 
 
 
-print(recipe_loop(recipes, costs_table))
+#print(recipe_loop(recipes, costs_table))
