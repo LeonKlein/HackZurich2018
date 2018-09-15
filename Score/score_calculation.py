@@ -17,6 +17,15 @@ def read_scrapped_file(fname, region=None):
     else:
         return recipes[region[0]:region[1]]
 
+def write_score(fscore, region=None):
+    with open(fname) as f:
+        content = f.read()
+        recipes = json.loads(content)
+    if region is None:
+        return recipes
+    else:
+        return recipes[region[0]:region[1]]
+
 
 def extract_cost_table(fref_name):
     # Returns dictionary
@@ -69,26 +78,29 @@ def calc_weight(amount):
 def calculate_score(ingredients, lookup_table):
     score = 0
     for ing in ingredients:
+        found = False
         for key in lookup_table.keys():
-            if key in ing:
+            if key in ing["ingredient"]:
                 score += lookup_table[key] * calc_weight(ing)
+                found = True
                 break
+
+        if found == False:
+            """Initialise non existing ingredients"""
+            value1 = np.around(np.random.random(), decimals=2) * 10
+            value2 = np.around(np.random.random(), decimals=2) * 50
+            value3 = np.around(np.random.random(), decimals=2)
+            score += value1 * calc_weight(ing)
             
-        """Initialise non existing ingredients"""
-        value1 = np.around(np.random.random(), decimals=2) * 10
-        value2 = np.around(np.random.random(), decimals=2) * 50
-        value3 = np.around(np.random.random(), decimals=2)
-        score += value1 * calc_weight(ing)
-        
-        with open(fref, mode='a', newline='') as csv_file:
-            fieldnames = [ing['ingredient'], value1, value2, value3]
-            writer = csv.writer(csv_file, delimiter=';')
-            writer.writerow(fieldnames)
+            with open(fref, mode='a', newline='') as csv_file:
+                fieldnames = [ing['ingredient'], value1, value2, value3]
+                writer = csv.writer(csv_file, delimiter=';')
+                writer.writerow(fieldnames)
                 
     return score
 
 
-recipes = read_scrapped_file(fname, region=(1, 3))
+recipes = read_scrapped_file(fname, region=(800, 1000))
 costs_table = extract_cost_table(fref_name=fref)
 
 # Loop over recipes
