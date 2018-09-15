@@ -34,7 +34,8 @@ def regex_matching(recipe):
     ingredients = recipe['Ingredients']
 
     quantities = (r"(?P<unit>cups|cup|ounce|tablespoons|tablespoon|teaspoons"
-                  r"|teaspoon|pounds|pound|pints|pint|pinch|pinches|)")
+                  r"|teaspoon|pounds|pound|pints|pint|pinches|pinch|gallons"
+                  r"|gallon|)")
     pattern = r'(?P<quantity>[0-9/ ]+)' \
         + quantities    \
         + r' (?P<ingredient>[a-zA-Z, ]+)'
@@ -53,14 +54,14 @@ def calc_weight(amount):
     conversion = {"cup": 0.15, "cups": 0.15, "tablespoon": 0.008,
                   "tablespoons": 0.008, "ounce": 0.03, "ounces": 0.03, "pound": 0.45,
                   "pounds": 0.45, "pint": 0.45, "pints": 0.45, "teaspoon": 0,
-                  "teaspoons": 0, "pinch": 0, "pinches": 0}
+                  "teaspoons": 0, "pinch": 0, "pinches": 0, "gallons": 3.8, "gallon": 3.8}
 
     if amount['unit'] in list(conversion.keys()):
         conversion_rate = conversion[amount['unit']]
-        print(amount)
+        #print(amount)
     else:
         conversion_rate = 0
-        print(amount)
+        #print(amount)
     return float(Mixed(amount['quantity'])) * conversion_rate
 
 
@@ -75,11 +76,12 @@ def calculate_score(ingredients):
             value2 = np.around(np.random.random(), decimals=2) * 50
             value3 = np.around(np.random.random(), decimals=2)
             score += value1 * calc_weight(ing)
-
+            """
             with open(fref, mode='a', newline='') as csv_file:
                 fieldnames = [ing['ingredient'], value1, value2, value3]
                 writer = csv.writer(csv_file, delimiter=';')
                 writer.writerow(fieldnames)
+            """
     return score
 
 
