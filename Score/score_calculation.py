@@ -9,12 +9,14 @@ fref = "Score/EnvironmentalData.csv"
 
 with open(fname) as f:
     content = f.read()
-    recipes = json.loads(content)[0:30]
+    recipes = json.loads(content)[2:3]
 for recipe in recipes:
     #get ingredients and their amount
     ingredients = recipe['Ingredients']  
 
-    pattern = r'(?P<quantity>[0-9/ ]+) (?P<unit>[a-z]+) (?P<ingredient>[a-zA-Z, ]+)'
+    quantities = (r"(?P<unit>cups|cup|ounce|tablespoons|tablespoon|teaspoons"
+        r"|teaspoon|pounds|pound|pints|pint|pinch|pinches|)")
+    pattern = r'(?P<quantity>[0-9/ ]+)' + quantities + r' (?P<ingredient>[a-zA-Z, ]+)'
     regex_ = re.compile(pattern, re.DOTALL) 
     ingreds = [] 
     for ing in ingredients:
@@ -42,12 +44,17 @@ for recipe in recipes:
     def calc_weight(amount):
         """Calculate the amount in kg
         """
-        conversion = {"cup": 0.15, "cups": 0.15, "tablespoons": 0.008, "ounces": 0.03}
+        conversion = {"cup": 0.15, "cups": 0.15, "tablespoon": 0.008, 
+        "tablespoons": 0.008, "ounce": 0.03, "ounces": 0.03, "pound": 0.45,
+         "pounds": 0.45, "pint": 0.45, "pints": 0.45, "teaspoon": 0,
+          "teaspoons": 0, "pinch": 0, "pinches": 0}
 
         if amount['unit'] in list(conversion.keys()):
             conversion_rate = conversion[amount['unit']]
+            print(amount)
         else:
             conversion_rate = 0
+            print(amount)
         return float(Mixed(amount['quantity'])) * conversion_rate
 
 
@@ -61,11 +68,11 @@ for recipe in recipes:
             value2 = np.around(np.random.random(), decimals=2) * 50 
             value3 = np.around(np.random.random(), decimals=2)
             score += value1 * calc_weight(ing) 
-            print(calc_weight(ing))
+            #print(calc_weight(ing))
 
             with open(fref, mode='a', newline='') as csv_file:
                 fieldnames = [ing['ingredient'] , value1, value2, value3]
                 writer = csv.writer(csv_file, delimiter=';')
                 writer.writerow(fieldnames)
-    print(score)
+    #print(score)
 

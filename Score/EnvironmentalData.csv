@@ -44,79 +44,226 @@ Flour;0.51;;
 Peas;0.6;;
 Barley;0.52;;
 Chickpeas;0.67;;
-sifted cake flour;8.100000000000001;18.5;0.92
-confectioners;9.399999999999999;4.0;0.66
-egg whites;7.1;28.000000000000004;0.42
+confectioner;9.399999999999999;4.0;0.66
 salt;4.5;31.5;0.81
-cream of tartar;1.6;49.5;0.61
-vanilla extract;6.5;20.0;0.09
-almond extract;2.7;27.0;0.84
-white sugar;2.8000000000000003;13.5;0.71
-confectioners;9.1;7.000000000000001;0.21
-butter, softened;5.5;12.5;0.13
-cream;6.4;10.5;0.31
-vanilla extract;2.6;17.0;1.0
-marshmallows, quartered;8.5;15.0;0.76
-heavy whipping cream;3.0;35.0;0.65
-graham cracker crumbs;2.0;34.0;0.31
-chopped candied cherries;4.699999999999999;12.0;0.02
-chopped candied pineapple;2.1;11.5;0.81
-dates, pitted and chopped;8.7;42.5;0.02
-chopped salted pecans;5.8999999999999995;39.0;0.78
+cream;1.6;49.5;0.61
+vanilla;6.5;20.0;0.09
+sugar;2.8000000000000003;13.5;0.71
+butter;5.5;12.5;0.13
+marshmallow;8.5;15.0;0.76
+cherrie;4.699999999999999;12.0;0.02
+pineapple;2.1;11.5;0.81
+date;8.7;42.5;0.02
+pecan;5.8999999999999995;39.0;0.78
 orange zest;1.7999999999999998;42.0;0.42
-sherry;3.0;46.0;0.01
 baking powder;8.0;21.5;0.29
-shortening;1.0;8.0;0.2
-milk;9.1;25.5;0.43
-whites;6.8999999999999995;7.000000000000001;0.58
-chopped walnuts;1.4000000000000001;37.5;0.84
-maraschino cherries, chopped;0.8999999999999999;47.5;0.31
-Seven Minute Frosting;5.6000000000000005;28.499999999999996;0.69
-cherries, halved;4.2;32.0;0.03
-vegetable oil;2.4;26.0;0.27
-all;3.3000000000000003;29.5;0.44
+walnuts;1.4000000000000001;37.5;0.84
+oil;2.4;26.0;0.27
 baking soda;8.7;36.0;0.46
-ground cinnamon;7.3;2.0;0.02
-ground nutmeg;9.1;17.5;0.64
-ground cloves;1.2;17.5;0.06
-chopped pecans;5.699999999999999;22.5;0.64
+cinnamon;7.3;2.0;0.02
+nutmeg;9.1;17.5;0.64
+cloves;1.2;17.5;0.06
 unsalted butter;5.8;31.0;0.11
-light brown sugar;6.2;49.0;0.55
-bananas, mashed;5.4;6.0;0.53
-buttermilk;6.800000000000001;38.0;0.25
-apricot nectar;3.1;25.0;0.95
-lemon extract;2.2;35.0;0.2
+apricot;3.1;25.0;0.95
 lemon;5.4;4.0;0.26
-flaked coconut;6.6000000000000005;38.5;0.32
-flaked coconut;6.5;37.0;0.02
-butter, melted;7.199999999999999;20.0;0.55
+coconut;6.5;37.0;0.02
 coffee;7.0;14.000000000000002;0.69
-grated zucchini;8.299999999999999;7.5;0.29
+zucchini;8.299999999999999;7.5;0.29
 raisins;3.1;46.5;0.25
-sifted all;5.5;39.5;0.35
-peeled, cored and shredded apple;3.7;10.0;0.33
-walnuts;5.300000000000001;24.5;0.84
-butter;1.6;20.0;0.58
-strong, hot, brewed coffee;0.4;5.5;0.3
-unsweetened cocoa powder;7.9;24.0;0.71
-cake flour;9.9;9.0;0.64
-white sugar, divided;1.7999999999999998;42.0;0.03
-grated lemon zest;1.3;41.0;0.09
-lemon juice;7.3;45.0;0.66
-plain whole;1.9;15.5;0.33
-coffee flavored liqueur;2.4;4.0;0.42
-dry chocolate mousse mix;3.1;41.5;0.64
-slivered almonds for topping;3.5999999999999996;44.5;0.38
-amaretto liqueur;0.8999999999999999;6.5;0.02
-water;9.1;33.5;0.74
-amaretto liqueur;7.3;14.499999999999998;0.04
-sifted confectioners;9.1;14.000000000000002;0.38
-crushed pineapple, drained;4.1;23.5;0.03
-butterscotch pudding;4.0;41.0;0.45
-butterscotch chips;0.3;4.5;0.62
-blanched slivered almonds;4.9;41.0;0.89
-licorice whips;9.3;4.5;0.76
-ground mace;9.8;36.5;0.92
-strawberry ice cream, softened;8.7;17.5;0.46
-cream cheese;7.5;29.5;0.81
-fresh strawberries;7.199999999999999;3.0;0.08
+apple;3.7;10.0;0.33
+chocolate;3.1;41.5;0.64
+water;0.;0.;0.001
+pudding;4.0;41.0;0.45
+chips;0.3;4.5;0.62
+licorice;9.3;4.5;0.76
+strawberries;7.199999999999999;3.0;0.08
+strawberry;7.199999999999999;3.0;0.08
+margarine;9.9;46.5;0.22
+vinegar;0.3;12.0;0.86
+margarine;1.7999999999999998;47.5;0.21
+syrup;3.1;26.5;0.19
+bread;0.0;29.5;0.16
+starch;2.7;24.5;0.7
+oats;8.299999999999999;17.0;0.76
+peanut;2.7;2.5;0.42
+yolks;6.5;25.5;0.58
+rhubarb;7.800000000000001;5.5;0.72
+plums;1.7000000000000002;2.0;0.82
+orange;7.4;48.5;0.02
+ginger;3.5;1.0;0.56
+yogurt;9.1;12.0;0.88
+fruit;0.4;33.0;0.64
+blackberries;5.699999999999999;15.0;0.64
+whipped cream;4.699999999999999;36.5;0.58
+apricot brandy;2.0;15.5;0.27
+orange extract;7.4;11.5;0.07
+molasses;8.8;7.5;0.03
+golden raisins, chopped;8.0;26.5;0.72
+Williamsburg Butter Frosting;0.3;23.5;0.96
+seedless raspberry jam;8.299999999999999;13.0;0.83
+ground walnuts;1.4000000000000001;5.0;0.93
+ground pecans;6.2;42.5;0.13ice water;3.5999999999999996;27.500000000000004;0.52
+banana;0.4;8.0;0.69
+pumpkin;2.5;26.0;0.82
+coffee;5.300000000000001;40.5;0.47
+blueberries;4.0;13.0;0.32
+blueberry;4.0;13.0;0.32
+fresh pineapple ;7.1;7.5;0.44
+vegetable oil for frying;1.0;33.5;0.23
+apples ;7.9;5.5;0.21
+dried currants;1.1;12.0;0.09
+brandy;0.2;2.5;0.08
+apple juice;3.7;29.5;0.19
+ground almonds;6.3;17.0;0.11
+red candied cherries;0.8999999999999999;32.0;0.36
+green candied cherries;8.4;23.5;0.47
+diced candies mixed fruit peel;3.0;46.0;0.82
+candied cherries, quartered;0.8;44.0;0.3
+whole almonds;5.300000000000001;0.5;0.53
+coarsely grated unpeeled pears;4.5;46.5;0.64
+beer;4.9;7.5;0.96
+diced candied orange peel;1.6;14.000000000000002;0.8
+finely chopped almonds;9.399999999999999;2.0;0.6
+applesauce;0.4;5.5;0.04
+coarsely chopped walnuts;7.6;36.0;0.85
+Friendship Fruit Starter;4.3;26.0;0.15
+baking mix;9.7;37.5;0.49
+apple pie spice;6.800000000000001;4.5;0.78
+apple pie filling;2.5;42.5;0.34
+sugar free chocolate wafer cookie crumbs;1.6;11.0;0.21
+brown sugar substitute;7.7;6.5;0.52
+instant espresso coffee powder;9.7;24.0;0.58
+mini semi;8.100000000000001;12.5;0.85
+any flavor fruit jam;6.6000000000000005;40.5;0.2
+sweetened condensed milk;6.8999999999999995;16.0;0.46
+chopped almonds;1.0;18.0;0.36
+chopped marshmallows;2.7;34.5;0.14
+candied pineapple chunks;3.5;44.5;0.2
+rhubarb, chopped;0.5;36.5;0.01
+rum;0.6;18.5;0.05
+rum;6.1;43.5;0.26
+finely chopped blanched almonds;2.7;4.5;0.1
+chopped walnuts, toasted;7.6;13.5;0.95
+cold milk;5.8999999999999995;7.5;0.08
+blue cheese, crumbled;8.299999999999999;19.0;0.78
+ground white pepper;3.3000000000000003;6.5;0.28
+bell pepper, halved and deseeded;3.4000000000000004;46.0;0.84
+onion;1.6;41.0;0.29
+glucose syrup;5.2;28.499999999999996;0.36
+glycerin;7.199999999999999;23.0;0.23
+cottage cheese;9.5;18.5;0.06
+finely shredded Swiss cheese;0.8999999999999999;0.5;0.18
+currant jelly;5.5;24.0;0.63
+cookies, crushed;8.2;43.0;0.04
+white;1.0;6.0;0.46
+part;0.8;18.5;0.37
+honey;8.7;47.5;0.51
+egg substitute;0.1;34.0;0.73
+frozen blueberries, dry pack;8.6;21.0;0.41
+blueberry jelly;3.4000000000000004;12.0;0.88
+cola;5.5;43.0;0.69
+crushed zwieback toast;1.7999999999999998;43.5;0.35
+shredded Colby cheese;3.2;12.0;0.81
+wafers, crushed;0.1;48.0;0.7
+cottage cheese, creamed;6.7;1.0;0.95
+cherry brandy;0.7000000000000001;35.0;0.11
+cherry brandy;1.5;0.5;0.57
+sour cream ;9.3;27.500000000000004;0.49
+strong brewed coffee, boiling;2.0;33.5;0.04
+chocolate cookie crumbs;4.1;29.5;0.13
+heavy cream, divided;7.5;33.5;0.42
+cold, brewed coffee;6.0;38.0;0.69
+butter flavored extract;0.3;15.5;0.33
+buttermilk, room temperature;9.200000000000001;42.5;0.36
+white vinegar;5.5;39.5;0.07
+butter, room temperature;7.800000000000001;1.0;0.48
+finely ground walnuts;3.4000000000000004;12.5;0.65
+cream cheese, softened;7.3;50.0;0.04
+key lime juice;0.1;43.0;0.39
+oranges;9.399999999999999;37.5;0.34
+strong brewed coffee;5.0;6.5;0.67
+apple jelly;5.8999999999999995;23.0;0.7
+finely chopped walnuts;1.0;50.0;0.67
+orange juice, strained;9.3;32.0;0.43
+light rum;4.5;34.0;0.41
+butter, cut into ;7.5;6.0;0.91
+chopped raisins;7.3;21.0;0.22
+grated apple;5.2;28.000000000000004;0.33
+pineapple juice;6.1;42.5;0.92
+grated lime zest;4.4;2.0;0.13
+raisins or dates;2.4;6.5;0.61
+honey ;1.6;49.5;0.14
+dark corn syrup;0.0;12.0;0.39
+guava pulp;2.3000000000000003;20.0;0.17
+guava nectar;9.7;15.0;0.34
+miniature marshmallows;0.4;19.0;0.66
+chopped peanuts;5.6000000000000005;26.5;0.44
+yolk, beaten;1.9;20.0;0.77
+shredded coconut;8.299999999999999;48.5;0.57
+fresh lime juice;4.6000000000000005;18.5;0.21
+fresh lime juice;8.100000000000001;44.0;0.9
+lime;4.8;25.5;0.76
+vanilla wafer crumbs;8.7;37.5;0.99
+packed light brown sugar;7.6;5.5;0.16
+hazelnuts ;7.4;46.0;0.96
+hazelnut liqueur;7.9;8.0;0.59
+sour cream, room temperature;8.100000000000001;4.0;0.43
+hazelnut liqueur;6.7;3.0;0.17
+apricot preserves;6.2;25.5;0.8
+plain low;6.3;26.0;0.05
+low;9.6;43.0;0.55
+low;8.2;32.5;0.2
+pecan liqueur;8.8;9.5;0.56
+pecan liqueur;1.7000000000000002;48.0;0.83
+pecan halves;3.0;0.0;0.45
+diced bananas;3.5999999999999996;2.0;0.28
+candied orange peel;4.2;20.5;0.83
+thinly sliced apples;0.7000000000000001;43.0;0.18
+individually wrapped caramels, unwrapped;2.3000000000000003;16.5;0.15
+heavy cream, whipped;0.7000000000000001;34.0;0.41
+chocolate syrup;8.4;47.0;0.79
+creme de menthe liqueur;1.1;18.0;0.03
+olive oil;6.3;16.0;0.53
+creamed cottage cheese;3.3000000000000003;33.5;0.34
+heavy cream, chilled;8.299999999999999;31.0;0.83
+unflavored gelatin;3.2;10.5;0.83
+finely ground almonds;0.2;22.5;0.48
+prunes, pitted and chopped;3.4000000000000004;7.000000000000001;0.79
+heavy cream;7.1;7.5;0.56
+yogurt;5.5;1.5;0.25
+banana extract;6.8999999999999995;11.5;0.88
+instant coffee powder;9.9;25.0;0.76
+flaked coconut ;7.199999999999999;34.0;0.04
+buttermilk baking mix;0.4;16.5;0.37
+chopped dried apples;1.5;1.0;0.19
+water, or as needed;1.9;40.0;0.52
+cold, strong, brewed coffee;4.2;36.5;0.5
+poppyseed filling;2.4;49.0;0.75
+whiskey;9.5;37.5;0.49
+sauerkraut, drained and rinsed;0.8;8.0;0.91
+almond paste;4.699999999999999;7.000000000000001;0.24
+blanched almonds;5.1;35.0;0.24
+green food coloring;8.6;20.5;0.82
+chopped nuts;8.9;17.5;0.48
+yellow food coloring;2.6;14.499999999999998;0.55
+chopped golden raisins;1.2;9.5;0.29
+chopped cranberries;7.7;3.0;0.48
+unsweetened crushed pineapple;3.7;45.0;0.03
+grated lemon peel;3.1;14.000000000000002;0.57
+artificial sweetener;5.6000000000000005;11.5;0.65
+brewed coffee;9.7;39.5;0.62
+apples;9.6;40.5;0.52
+lukewarm milk;7.4;6.0;0.49
+sifted cake flour;1.3;19.0;0.48
+white sugar;9.3;25.0;0.42
+shortening;9.6;3.0;0.44
+milk;4.3;39.0;0.95
+vanilla extract;2.7;35.0;0.89
+almond extract;2.6;15.0;0.14
+egg whites;3.5;48.0;0.59
+chopped walnuts;1.1;29.5;0.62
+maraschino cherries, chopped;0.2;27.500000000000004;0.55
+recipe Seven Minute Frosting;5.8999999999999995;24.5;0.06
+maraschino cherries, halved;6.7;31.5;0.95
+vegetable oil;7.199999999999999;39.0;0.04
+eggs;7.6;36.0;0.91
