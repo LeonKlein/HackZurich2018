@@ -17,11 +17,7 @@ def setup_db(db_file, recipes):
 
     for recipe in recipes:
         ingreds = regex_matching(recipe)
-        #print(ingreds)
-        #table.insert(recipe["Ingredients"])
-
-    """ the_table = db['recipes'].all()
-    print([y for y in the_table]) """
+        table.insert(dict())
 
 
 setup_db(db_file, recipes)
