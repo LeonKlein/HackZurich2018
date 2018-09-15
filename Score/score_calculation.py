@@ -40,7 +40,7 @@ def regex_matching(recipe):
     # get ingredients and their amount
     ingredients = recipe['Ingredients']
 
-    quantities = (r"(?P<unit>cups|cup|ounce|tablespoons|tablespoon|teaspoons"
+    quantities = (r"(?P<unit>cups|cup|ounces|ounce|tablespoons|tablespoon|teaspoons"
                   r"|teaspoon|pounds|pound|pints|pint|pinches|pinch|gallons"
                   r"|gallon|)")
     pattern = r'(?P<quantity>[0-9/ ]+)' \
@@ -121,7 +121,3 @@ def recipe_loop(recipes, costs_table):
         # write_score(fscore, url, score)
         #print(score)
     return np.array(all_scores) / max(all_scores)
-
-
-
-print(recipe_loop(recipes, costs_table))
