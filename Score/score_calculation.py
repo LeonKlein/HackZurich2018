@@ -2,7 +2,7 @@ import json
 import csv
 import re
 import numpy as np
-from mixed_fractions import Mixed
+from Score.mixed_fractions import Mixed
 
 
 fname = "DataScrapper/tools/scrappedData.txt"
@@ -18,6 +18,7 @@ def read_scrapped_file(fname, region=None):
         return recipes
     else:
         return recipes[region[0]:region[1]]
+
 
 def write_score(fscore_name, url, score):
     data = {"Url": url, "Score": score}
@@ -99,8 +100,8 @@ def calculate_score(ingredients, lookup_table):
     return score
 
 
-recipes = read_scrapped_file(fname, region=(1, 3))
-costs_table = extract_cost_table(fref_name=fref)
+#recipes = read_scrapped_file(fname, region=(1, 3))
+#costs_table = extract_cost_table(fref_name=fref)
 
 
 def process_recipe(recipe, costs_table):
