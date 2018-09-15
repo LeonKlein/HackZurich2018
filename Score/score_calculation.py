@@ -85,7 +85,7 @@ def calculate_score(ingredients, lookup_table):
                 found = True
                 break
 
-        if found == False:
+        if not found:
             """Initialise non existing ingredients"""
             value1 = np.around(np.random.random(), decimals=2) * 10
             value2 = np.around(np.random.random(), decimals=2) * 50

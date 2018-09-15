@@ -6,8 +6,8 @@ db_file = 'sqlite:///mydb.db'
 fname = "DataScrapper/tools/scrappedData.txt"
 fref = "Score/EnvironmentalData.csv"
 
-recipes = read_scrapped_file(fname, region=(1, 3))
-costs_table = extract_cost_table(fref_name=fref)
+#recipes = read_scrapped_file(fname, region=(1, 3))
+#costs_table = extract_cost_table(fref_name=fref)
 
 
 def setup_db(db_file, recipes):
@@ -16,12 +16,12 @@ def setup_db(db_file, recipes):
     table.drop()
 
     for recipe in recipes:
+        print("hallo")
         ingreds = regex_matching(recipe)
         #print(ingreds)
         #table.insert(recipe["Ingredients"])
 
-    """ the_table = db['recipes'].all()
-    print([y for y in the_table]) """
 
 
-setup_db(db_file, recipes)
+
+#setup_db(db_file, recipes)
