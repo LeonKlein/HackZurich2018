@@ -6,6 +6,7 @@ from mixed_fractions import Mixed
 
 fname = "DataScrapper/tools/scrappedData.txt"
 fref = "Score/EnvironmentalData.csv"
+fscore = "Score/scores.txt"
 
 
 def read_scrapped_file(fname, region=None):
@@ -17,14 +18,11 @@ def read_scrapped_file(fname, region=None):
     else:
         return recipes[region[0]:region[1]]
 
-def write_score(fscore, region=None):
-    with open(fname) as f:
-        content = f.read()
-        recipes = json.loads(content)
-    if region is None:
-        return recipes
-    else:
-        return recipes[region[0]:region[1]]
+def write_score(fscore_name, url, score):
+    data = {"Url": url, "Score": score}
+    with open(fscore_name, 'w') as fp:
+        json.dump(data, fp)
+
 
 
 def extract_cost_table(fref_name):
@@ -110,8 +108,9 @@ for recipe in recipes:
 
     # get number of servings
     servings = recipe['Servings']
-
-    score = calculate_score(ingredients=ingreds, lookup_table=costs_table)
+    url = recipe['Url']
+    score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
+    write_score(fscore, url, score)
     print(score)
 
 #print (costs_table)
