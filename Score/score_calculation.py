@@ -54,7 +54,8 @@ def calc_weight(amount):
     conversion = {"cup": 0.15, "cups": 0.15, "tablespoon": 0.008,
                   "tablespoons": 0.008, "ounce": 0.03, "ounces": 0.03, "pound": 0.45,
                   "pounds": 0.45, "pint": 0.45, "pints": 0.45, "teaspoon": 0,
-                  "teaspoons": 0, "pinch": 0, "pinches": 0, "gallons": 3.8, "gallon": 3.8}
+                  "teaspoons": 0, "pinch": 0, "pinches": 0, "gallons": 3.8, "gallon": 3.8,
+                  "": 0.06}
 
     if amount['unit'] in list(conversion.keys()):
         conversion_rate = conversion[amount['unit']]
@@ -65,27 +66,29 @@ def calc_weight(amount):
     return float(Mixed(amount['quantity'])) * conversion_rate
 
 
-def calculate_score(ingredients):
+def calculate_score(ingredients, lookup_table):
     score = 0
     for ing in ingredients:
-        if ing['ingredient'] in list(costs_table.keys()):
-            score += costs_table[ing['ingredient']] * calc_weight(ing)
-        else:
-            """Initialise non existing ingredients"""
-            value1 = np.around(np.random.random(), decimals=2) * 10
-            value2 = np.around(np.random.random(), decimals=2) * 50
-            value3 = np.around(np.random.random(), decimals=2)
-            score += value1 * calc_weight(ing)
-            """
-            with open(fref, mode='a', newline='') as csv_file:
-                fieldnames = [ing['ingredient'], value1, value2, value3]
-                writer = csv.writer(csv_file, delimiter=';')
-                writer.writerow(fieldnames)
-            """
+        for key in lookup_table.keys():
+            if key in ing:
+                score += lookup_table[key] * calc_weight(ing)
+                break
+            
+        """Initialise non existing ingredients"""
+        value1 = np.around(np.random.random(), decimals=2) * 10
+        value2 = np.around(np.random.random(), decimals=2) * 50
+        value3 = np.around(np.random.random(), decimals=2)
+        score += value1 * calc_weight(ing)
+        
+        with open(fref, mode='a', newline='') as csv_file:
+            fieldnames = [ing['ingredient'], value1, value2, value3]
+            writer = csv.writer(csv_file, delimiter=';')
+            writer.writerow(fieldnames)
+                
     return score
 
 
-recipes = read_scrapped_file(fname, region=(2, 9))
+recipes = read_scrapped_file(fname, region=(1, 3))
 costs_table = extract_cost_table(fref_name=fref)
 
 # Loop over recipes
@@ -96,5 +99,7 @@ for recipe in recipes:
     # get number of servings
     servings = recipe['Servings']
 
-    score = calculate_score(ingredients=ingreds)
+    score = calculate_score(ingredients=ingreds, lookup_table=costs_table)
     print(score)
+
+#print (costs_table)
