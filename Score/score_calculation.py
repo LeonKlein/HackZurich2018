@@ -2,7 +2,7 @@ import json
 import csv
 import re
 import numpy as np
-from mixed_fractions import Mixed
+from Score.mixed_fractions import Mixed
 
 fname = "DataScrapper/tools/scrappedData.txt"
 fref = "Score/EnvironmentalData.csv"
@@ -121,3 +121,7 @@ def recipe_loop(recipes, costs_table):
         # write_score(fscore, url, score)
         #print(score)
     return np.array(all_scores) / max(all_scores)
+
+
+
+#print(recipe_loop(recipes, costs_table))

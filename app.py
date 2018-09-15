@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
-from score_calculation import extract_cost_table
-from score import process_recipe, read_scrapped_file
+from Score.score_calculation import extract_cost_table
+from Score.score_calculation import process_recipe, read_scrapped_file
 
 # Initialize the server
 app = Flask(__name__)
@@ -13,14 +13,17 @@ costs_table = extract_cost_table(fref_name=fref)
 
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
+def index():
+    return "index"
 
 
 @app.route('/get/<id>', methods=['GET'])
 def handle_get(id):
     if request.method == 'GET':
-        return jsonify({"score": 0.4})
+        the_url = "https://www.allrecipes.com/recipe/"+id
+        recipe = [item for item in recipes if item.get('Url') == the_url][0]
+        the_score = process_recipe(recipe, costs_table)
+        return jsonify({"Url": recipe["Url"], "score": the_score})
 
 
 if __name__ == '__main__':
