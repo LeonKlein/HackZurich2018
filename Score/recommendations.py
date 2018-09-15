@@ -9,15 +9,33 @@ fref = "Score/EnvironmentalData.csv"
 recipes = read_scrapped_file(fname, region=(1, 3))
 costs_table = extract_cost_table(fref_name=fref)
 
+def find_matches(ingredients, lookup_table):
+    listed_ingreds = {}
+    for ing in ingredients:
+        for key in lookup_table.keys():
+            if key in ing:
+                listed_ingreds[key] = 1
+                break
+    return listed_ingreds
 
 def setup_db(db_file, recipes):
     db = dataset.connect(db_file)
     table = db['recipes']
     table.drop()
+    score = 0
 
-    for recipe in recipes:
-        ingreds = regex_matching(recipe)
-        table.insert(dict())
+    for recipe, score in zip(recipes, scores):
+        ingredients = regex_matching(recipe)
+        ingredient_names = [one_ing['ingredient'] for one_ing in ingredients]
+        lookup_table = extract_cost_table(fref)
+        listed_ingreds = find_matches(ingredient_names, lookup_table)
+        listed_ingreds.update({"Url": recipe["Url"], "Score": score})
+        table.insert(listed_ingreds)
+    [print(row) for row in table.all()]
+
+def find_better(table, recipe):
+    "Find recipes with a better score and similar ingredients."
+    better_recipe = table.find("Score"={'>': recipe["Score"]})
 
 
 setup_db(db_file, recipes)
