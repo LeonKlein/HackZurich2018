@@ -98,7 +98,7 @@ def calculate_score(ingredients, lookup_table):
     return score
 
 
-recipes = read_scrapped_file(fname, region=(800, 1000))
+recipes = read_scrapped_file(fname, region=(800, 1))
 costs_table = extract_cost_table(fref_name=fref)
 
 
