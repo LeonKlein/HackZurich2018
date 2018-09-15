@@ -98,7 +98,7 @@ def calculate_score(ingredients, lookup_table):
     return score
 
 
-recipes = read_scrapped_file(fname, region=(800, 1))
+recipes = read_scrapped_file(fname, region=(1, 3))
 costs_table = extract_cost_table(fref_name=fref)
 
 
@@ -120,8 +120,8 @@ def recipe_loop(recipes, costs_table):
         all_scores.append(score)
         # write_score(fscore, url, score)
         #print(score)
-    return all_scores / max(all_scores)
+    return np.array(all_scores) / max(all_scores)
 
 
 
-#print(recipe_loop(recipes, costs_table))
+print(recipe_loop(recipes, costs_table))
