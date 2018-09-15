@@ -1,6 +1,6 @@
 almond;2.18;26.31;1.9
 beef;27.76;164.22;0.47
-cheese slices;8.29;35.5;0.15
+cheese;8.29;35.5;0.15
 chicken;6.82;64.14;0.34
 chocolate;14.67;90.25;0.38
 corn;0.19;1.88;0.06
@@ -12,6 +12,8 @@ organic milk;1.11;1.39;0
 egg;3.94;36.1;0.18
 pancetta;10.76;91.4;0.52
 pork;10.76;91.4;0.52
+sausage;10.76;91.4;0.52
+bacon;10.76;91.4;0.52
 quorn;0.19;1.88;0.06
 kidney bean;0.78;5.67;0.14
 bean;2.0;5.67;0.14
@@ -49,6 +51,7 @@ orange;1.1;42.0;0.42
 baking powder;8.0;21.5;0.29
 walnuts;2.3;37.5;0.84
 oil;2.4;26.0;0.27
+shortening;2.4;26.0;0.27
 baking soda;8.7;36.0;0.46
 cinnamon;7.3;2.0;0.02
 nutmeg;2.3;17.5;0.64
@@ -88,3 +91,330 @@ gelatin;3.2;10.5;0.83
 nut;2.3;17.5;0.48
 berries;1.1;3.0;0.48
 berry;1.1;3.0;0.48
+banana;1.1;28.000000000000004;0.27
+cocoa;1.4000000000000001;15.5;0.18
+mango;1.1;25.5;0.67
+peach;1.1;13.0;0.69
+mayonnaise;2.3000000000000003;47.0;0.96
+pumpkin;2.0;37.5;0.85
+honey;5.2;18.5;0.96
+juice;1.1;9.5;0.74
+carrots;2.0;24.0;0.15
+tomatoes;1.1;36.0;0.28
+grapes;1.1;27.500000000000004;0.82
+juice;2.1;34.5;0.23
+mushroom;2.0;35.5;0.85
+garlic;2.0;47.5;0.68
+teriyaki;5.4;37.0;0.23
+soy;1.9;34.5;0.55
+cashew;2.3;8.0;0.51
+paprika;2.0;2.0;0.09
+celery;2.0;14.499999999999998;0.37
+sausage;0.6;1.5;0.95
+seeds;2.3;34.0;0.77
+squash;5.4;15.5;0.66
+olive;2.0;15.5;0.71
+ketchup;0.6;47.0;0.48
+sala;2.0.5;0.2
+
+
+hard;5.2;5.0;0.53
+radishes;7.6;20.5;0.79
+red wine;6.5;19.0;0.8
+dried thyme;5.1;37.5;0.99
+half;7.800000000000001;14.499999999999998;0.58
+Worcestershire sauce;9.5;12.0;0.86
+all;9.1;34.0;0.23
+Italian;2.0;36.5;0.53
+dry white wine;2.2;44.0;0.09
+ground savory;8.299999999999999;47.5;0.26
+dried marjoram;6.6000000000000005;11.5;0.02
+bay leaf;1.5;43.5;0.55
+dried parsley;2.3000000000000003;13.0;0.06
+all;4.2;31.0;0.84
+all;1.0;34.5;0.05
+ounces chopped pimento;9.7;30.5;0.43
+chopped fresh parsley;2.8000000000000003;36.0;0.17
+bunch fresh cilantro, chopped;8.2;28.000000000000004;0.28
+monosodium glutamate ;5.2;21.0;0.82
+curry powder;6.800000000000001;9.5;0.76
+dried basil;4.2;43.0;0.98
+dried oregano;1.7999999999999998;13.5;0.99
+dried rosemary, crushed;8.7;8.0;0.54
+cucumber ;8.9;14.000000000000002;0.64
+chopped fresh parsley;5.8999999999999995;1.5;0.15
+ground cumin;1.4000000000000001;44.5;0.55
+chili powder;5.8999999999999995;22.0;0.75
+ground cumin;5.2;19.5;0.91
+dried thyme;2.8000000000000003;1.0;0.44
+salsa;3.3000000000000003;36.5;0.51
+Worcestershire sauce;5.8999999999999995;48.5;0.8
+dried oregano;1.7000000000000002;30.0;0.41
+fresh chopped cilantro, for garnish;8.2;8.5;0.64
+ground turmeric;8.6;26.5;0.16
+roasted green chili, chopped;2.0;33.0;0.94
+ground cumin;8.4;31.5;0.86
+light Italian;7.9;42.0;0.77
+all;3.9000000000000004;31.5;0.48
+all;1.7999999999999998;26.0;0.16
+dry Marsala wine;2.0;2.5;0.01
+dried oregano;6.7;14.000000000000002;0.84
+chopped fresh parsley;7.4;4.5;0.53
+meat extract;8.2;26.5;0.6
+peeled and chopped fresh turmeric;1.1;31.5;0.38
+Worcestershire sauce;2.5;6.5;0.53
+chili powder;2.8000000000000003;42.0;0.28
+lasagna noodles;5.4;1.0;0.83
+dried basil;9.7;16.5;0.15
+chutney;3.9000000000000004;27.500000000000004;0.13
+prepared horseradish;5.8;39.5;0.48
+all;8.4;37.5;0.79
+minced shallots;8.7;8.5;0.88
+dry white wine;5.6000000000000005;0.0;0.44
+all;1.7999999999999998;13.0;0.38
+dried rosemary;7.199999999999999;2.5;0.35
+dried thyme;9.399999999999999;45.5;0.53
+bay leaf;7.4;32.5;0.93
+all;4.5;45.5;0.37
+poultry seasoning;6.800000000000001;45.0;0.38
+dried sage;7.0;9.0;0.32
+all;8.8;18.0;0.91
+chopped fresh basil;6.6000000000000005;20.5;0.32
+dried parsley;1.4000000000000001;37.0;0.65
+dried oregano;5.6000000000000005;23.5;0.46
+Worcestershire sauce;2.2;32.5;0.93
+white wine;5.1;15.0;0.06
+dried oregano;9.5;25.0;0.92
+ground cumin;6.2;46.5;0.72
+salsa;5.5;39.5;0.77
+all;4.8;12.5;0.29
+shallots, minced;0.6;45.5;0.92
+white wine;7.800000000000001;3.0;0.44
+dried rosemary, crushed;7.5;46.0;0.8
+all;7.7;31.5;0.67
+ground mustard;3.4000000000000004;26.5;0.21
+rubbed sage;4.8;34.5;0.73
+all;6.6000000000000005;2.0;0.52
+chopped fresh parsley;8.9;48.0;0.77
+dried thyme;1.1;20.0;0.91
+dried basil;8.2;45.5;0.98
+ground allspice;9.5;25.0;0.99
+poultry seasoning;8.6;20.5;0.71
+dried sage;8.9;48.0;0.51
+dry white wine;0.1;14.499999999999998;0.63
+dried oregano;9.5;25.5;0.18
+poultry seasoning;8.6;44.5;0.87
+artificial sweetener;7.800000000000001;44.0;0.34
+dried tarragon;5.8999999999999995;46.5;0.37
+all;2.5;43.0;0.5
+sherry;7.1;17.0;0.81
+avocado ;2.1;19.5;0.12
+mixed salad greens;0.8999999999999999;12.5;0.58
+bay leaf;8.100000000000001;14.499999999999998;0.99
+white wine;4.8;27.0;0.23
+avocados ;8.7;12.5;0.19
+salsa;2.1;15.5;0.57
+ounces diced tomato;7.1;32.5;0.02
+shredded lettuce;5.1;18.5;0.57
+sliced avocado;8.6;9.5;0.54
+low;8.9;35.5;0.46
+minced shallots;9.8;15.5;0.33
+white wine;8.7;27.500000000000004;0.59
+sprig fresh tarragon;8.7;47.0;0.53
+port wine;8.100000000000001;14.000000000000002;0.9
+chopped fresh parsley;1.4000000000000001;7.5;0.06
+prepared barbecue sauce;6.1;43.5;0.73
+Italian;9.3;48.0;0.87
+ground cumin;9.3;24.0;0.9
+white wine;8.6;13.5;0.8
+curry powder;6.800000000000001;4.5;0.87
+poultry seasoning;0.1;2.5;0.06
+all;0.1;1.5;0.58
+low;8.6;18.0;0.59
+quick;5.4;35.0;0.22
+carrot, thinly sliced;3.7;37.0;0.83
+curry powder;0.0;30.5;0.2
+ground coriander seed;4.0;42.0;0.6
+ground cumin;2.1;7.000000000000001;0.93
+dried oregano;9.7;38.0;0.12
+dried cilantro;8.9;0.0;0.78
+chile paste;3.4000000000000004;20.5;0.91
+medium head cabbage, coarsely chopped;8.4;34.0;0.06
+ounces soba noodles, cooked and drained;6.4;13.5;0.53
+spaghetti, cooked and drained;2.9;1.5;0.31
+ranch;1.1;49.5;0.6
+all;6.3;20.5;0.4
+shredded lettuce;9.9;29.5;0.41
+all;7.6;26.5;0.53
+dry white wine;3.4000000000000004;15.5;0.94
+pimento;1.4000000000000001;46.5;0.46
+all;0.2;21.0;0.95
+red wine;5.2;28.499999999999996;0.13
+leek, bulb only, chopped;2.9;41.5;0.82
+chopped fresh dill weed;0.3;18.0;0.14
+saturei ;9.8;32.5;0.76
+ground coriander seed;1.0;49.0;0.13
+herb;1.5;22.5;0.28
+Ranch;2.3000000000000003;11.0;0.33
+chopped fresh rosemary;1.2;47.5;0.87
+sprigs fresh rosemary;0.2;30.0;0.45
+ground turmeric;6.800000000000001;12.0;0.76
+ground cardamom;2.2;37.0;0.59
+kiwi, peeled and sliced for garnish;7.6;17.0;0.21
+hard;4.9;40.5;0.22
+self;7.9;26.5;0.79
+mustard powder;9.399999999999999;40.0;0.18
+Italian;7.3;16.5;0.37
+all;4.9;21.0;0.52
+curry powder;1.9;33.5;0.45
+all;6.3;0.0;0.33
+sherry;3.9000000000000004;30.5;0.74
+dried rosemary;7.0;33.0;0.58
+red wine;8.5;28.000000000000004;0.96
+dried rosemary;8.9;11.5;0.05
+dried thyme;9.9;28.999999999999996;0.49
+English muffins, split and toasted;6.0;31.5;0.24
+dried oregano;9.399999999999999;23.0;0.56
+fresh asparagus, trimmed and cut into ;6.3;10.0;0.02
+avocado ;4.0;6.5;0.12
+French dressing;1.4000000000000001;33.5;0.33
+Dijon;2.7;9.5;0.17
+bay leaves;9.1;16.5;0.82
+all;3.8;21.5;0.79
+chopped fresh parsley;5.2;31.0;0.06
+dried tarragon;9.5;24.5;0.96
+ground allspice;6.800000000000001;11.5;0.95
+white wine;4.5;40.0;0.64
+dried basil;2.6;9.0;0.45
+dried oregano;8.6;17.5;0.25
+dried rosemary;1.3;11.5;0.18
+dried thyme;7.3;27.0;0.79
+stuffing mix;4.1;4.5;0.57
+dried rosemary;4.5;30.5;0.51
+dried sage;1.1;10.0;0.73
+chopped fresh thyme;5.300000000000001;11.0;0.54
+ground allspice;9.3;16.5;0.26
+all;6.3;11.0;0.77
+dry white wine;2.5;13.0;0.43
+chopped fresh parsley;4.5;2.0;0.25
+all;5.8;1.0;0.43
+dry white wine;2.5;28.999999999999996;0.13
+ground coriander seed;2.7;34.5;0.98
+garam masala;2.6;1.0;0.72
+ground turmeric;8.7;35.5;0.42
+chili powder;7.800000000000001;11.0;0.51
+fresh chopped cilantro, for garnish;9.200000000000001;28.499999999999996;0.43
+Worcestershire sauce;9.3;40.5;0.08
+dried parsley;2.4;37.5;0.07
+all;9.3;49.5;0.9
+Italian;1.7000000000000002;41.5;0.39
+Cajun seasoning;5.1;12.5;0.2
+white wine;2.7;11.0;0.4
+roma ;5.8;29.5;0.26
+chopped fresh parsley;9.3;44.5;0.56
+dried oregano;6.800000000000001;21.5;0.16
+all;0.7000000000000001;11.5;0.36
+ground cumin;3.9000000000000004;27.0;0.77
+curry powder;2.3000000000000003;10.5;0.13
+white wine;8.100000000000001;18.5;0.49
+red wine;9.3;14.499999999999998;0.81
+chopped fresh basil;8.0;37.0;0.31
+dried rosemary;0.6;44.5;0.44
+all;7.5;34.5;0.7
+dried parsley;5.4;19.0;0.1
+bay leaves;5.8999999999999995;1.5;0.96
+Italian;3.9000000000000004;15.0;0.85
+dried oregano;1.7999999999999998;12.5;0.39
+all;8.100000000000001;24.0;0.99
+poultry seasoning;6.0;14.000000000000002;0.73
+Marsala wine;1.0;31.5;0.77
+dried rosemary;2.9;11.5;0.39
+croutons;7.199999999999999;29.5;0.09
+ground cumin;0.8;20.5;0.66
+ground coriander seed;9.5;40.5;0.66
+chopped fresh dill;6.0;15.0;0.96
+dried oregano;1.3;23.0;0.34
+dried basil;0.1;2.5;0.0
+dried parsley;9.6;31.0;0.97
+dried oregano;9.3;30.0;0.53
+chili powder;8.8;4.5;0.02
+dry sherry;2.7;43.5;0.26
+dried tarragon;4.1;14.499999999999998;0.65
+Worcestershire sauce;6.4;22.5;0.69
+chopped fresh cilantro;4.1;6.0;0.7
+chopped fresh cilantro;2.0;6.5;0.16
+tequila;5.8;34.0;0.56
+all;8.4;11.5;0.39
+half;9.7;16.0;0.47
+curry powder;7.0;49.5;0.94
+leeks, chopped;8.8;40.5;0.35
+white wine;4.5;42.0;0.81
+recipe pastry for a ;2.7;27.0;0.14
+all;7.0;41.0;0.71
+dried basil;5.6000000000000005;30.5;0.12
+dried basil;0.1;31.0;0.69
+all;4.5;41.0;0.08
+bay leaf;3.4000000000000004;24.0;0.74
+dried thyme;9.8;13.5;0.44
+all;7.5;26.5;0.74
+small head napa cabbage;1.5;14.499999999999998;0.71
+carrot, shredded;0.1;24.0;0.03
+dried sage;2.0;37.5;1.0
+garam masala;5.8;4.5;0.21
+curry powder;8.0;11.5;0.61
+chili powder;9.5;42.5;0.68
+Italian seasoning;2.5;15.0;0.71
+mustard powder;1.7999999999999998;21.5;0.78
+chopped fresh cilantro;7.6;28.000000000000004;0.06
+dark rum;2.9;2.0;0.23
+Italian;6.1;21.5;0.89
+poultry seasoning;0.5;4.5;0.59
+poultry seasoning;4.3;13.0;0.87
+Italian;5.2;10.0;0.24
+all;2.7;1.5;0.63
+chopped fresh parsley;5.2;36.5;0.96
+white wine;1.7000000000000002;19.5;0.15
+herb;2.9;41.0;0.21
+all;5.699999999999999;23.5;0.86
+dried thyme;9.6;45.5;0.78
+all;9.8;26.5;0.99
+bone;3.1;38.0;0.05
+ranch;5.1;14.499999999999998;0.03
+sage;0.8;2.0;0.72
+Dijon mustard;2.5;41.5;0.38
+steak sauce;3.5999999999999996;28.499999999999996;0.66
+chili powder;0.4;19.0;0.1
+ground cumin;8.8;35.5;0.64
+chili powder;3.2;35.5;0.16
+poultry seasoning;8.4;37.0;0.83
+dried sage;6.7;28.499999999999996;0.27
+all;8.5;11.0;0.3
+ounces Chinese;9.200000000000001;42.5;0.27
+long;3.1;14.499999999999998;0.95
+chopped fresh cilantro;0.7000000000000001;2.5;0.37
+Worcestershire sauce;3.3000000000000003;7.000000000000001;0.31
+dried oregano;2.6;9.5;0.99
+fresh chopped broccoli;1.9;14.499999999999998;0.97
+chopped fresh parsley;6.2;41.5;0.95
+dry sherry;3.7;28.499999999999996;0.4
+dried oregano;7.4;14.499999999999998;0.32
+dried parsley;2.1;41.5;0.16
+prepared mustard;1.0;17.0;0.56
+curry powder;5.6000000000000005;6.5;0.18
+tomato, chopped;6.7;12.5;0.5
+jerk paste;5.2;10.5;0.86
+jerk paste;8.100000000000001;13.5;0.67
+dry white wine;3.5;18.5;0.48
+chopped fresh cilantro;6.6000000000000005;7.5;0.82
+limes, quartered;0.7000000000000001;5.5;0.34
+sprigs fresh cilantro, for garnish;0.7000000000000001;2.0;0.89
+gin;7.3;46.5;0.28
+chopped fresh parsley;8.4;18.0;0.72
+ounces spinach, rinsed and chopped;9.3;18.5;0.4
+ground turmeric;3.1;50.0;0.08
+tomato paste;1.7000000000000002;40.5;0.2
+fish sauce;9.1;12.0;0.98
+curry powder;5.5;16.5;0.64
+cups ;0.3;48.5;0.32
+half;2.1;3.5000000000000004;0.54
+dried tarragon;4.4;49.0;0.28
