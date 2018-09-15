@@ -101,19 +101,27 @@ def calculate_score(ingredients, lookup_table):
 recipes = read_scrapped_file(fname, region=(800, 1000))
 costs_table = extract_cost_table(fref_name=fref)
 
+
+def process_recipe(recipe, costs_table):
+    ingreds = regex_matching(recipe)
+    # Normalize by number of servings
+    servings = recipe['Servings']
+    url = recipe['Url']
+    score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
+    return score
+
+
 # Loop over recipes
 # Calculate score fore every recipe
-def recipe_loop(recipes):
+def recipe_loop(recipes, costs_table):
+    all_scores = []
     for recipe in recipes:
-        ingreds = regex_matching(recipe)
+        score = process_recipe(recipe, costs_table)
+        all_scores.append(score)
+        # write_score(fscore, url, score)
+        #print(score)
+    return all_scores / max(all_scores)
 
-        # get number of servings
-        servings = recipe['Servings']
-        url = recipe['Url']
-        score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
-        write_score(fscore, url, score)
-        print(score)
 
-#print (costs_table)
 
-#recipe_loop(recipes)
+#print(recipe_loop(recipes, costs_table))
