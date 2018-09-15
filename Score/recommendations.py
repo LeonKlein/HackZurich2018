@@ -1,57 +1,64 @@
 import dataset
 from score_calculation import read_scrapped_file, extract_cost_table, regex_matching, recipe_loop
 import itertools as it
+import numpy as np
 
 db_file = 'sqlite:///mydb.db'
 fname = "DataScrapper/tools/scrappedData.txt"
 fref = "Score/EnvironmentalData.csv"
 
-recipes = read_scrapped_file(fname, region=(800, 810))
+recipes = read_scrapped_file(fname, region=None)
+urls = np.array([recipe["Url"] for recipe in recipes])
 costs_table = extract_cost_table(fref_name=fref)
 
-def find_matches(ingredients, lookup_table):
+def find_matches(recipe, lookup_table):
+    ingredients= regex_matching(recipe)
     ingredient_names = [one_ing['ingredient'] for one_ing in ingredients]
-    listed_ingreds = {}
+    listed_ingreds = []
     for ing in ingredient_names:
         for key in lookup_table.keys():
             if key in ing:
-                listed_ingreds[key] = 1
+                listed_ingreds.append(key)
                 break
-    return listed_ingreds
+    return list(set(listed_ingreds))
 
 def setup_db(recipes, lookup_table):
 
-    table.drop()
     scores = recipe_loop(recipes, lookup_table)
 
+    db = []
+    for recipe in recipes:
+        listed_ingreds = find_matches(recipe, lookup_table)
 
-    for recipe, score in zip(recipes, scores):
-        ingredients = regex_matching(recipe)
-        listed_ingreds = find_matches(ingredients, lookup_table)
-        listed_ingreds.update({"Url": recipe["Url"], "Score": score})
-        table.insert(listed_ingreds)
+        db.append(listed_ingreds)
+    return np.array(db), np.array(scores)
     #[print(row) for row in table.all()]
 
 
-def find_better(score, recipe, lookup_table):
+
+def find_current_score(url, recipes, scores):
+    recipe = [item for item in recipes if item.get('Url') == url][0]
+    idx = recipes.index(recipe)
+    return scores[idx]
+
+
+def find_better(current_recipe, scores, lookup_table):
     "Find recipes with a better score and similar ingredients."
-    ingredients = regex_matching(recipe)
-    print(ingredients)
-    ingredient_names = find_matches(ingredients, lookup_table)
-    print(ingredient_names)
-    ingredient_combinations = list(it.combinations(list(ingredient_names.keys()), len(ingredient_names) - 2))
-    print(ingredient_combinations)
-    for permutation in ingredient_combinations:
-        [print(permute) for permute in permutation]
-        better_recipe = table.find(table.table.columns.Score > score, [table.table.columns.permute for permute in permutation] > 0)
-    print([bet for bet in better_recipe])
-    #better_recipe = table.find(id=[0, 1])
+    current_list = find_matches(current_recipe, lookup_table)
+    current_score = find_current_score(current_recipe["Url"], recipes, scores)
+    coincidences = []
+    coin = []
+    better_data = data_base[scores > current_score]
+    better_urls = urls[scores > current_score]
+    better_scores = scores[scores > current_score]
+    for ingredient_list in better_data:
+        coin.append(list(set(current_list) & set(ingredient_list)))
+        coincidences.append(len(list(set(current_list) & set(ingredient_list))))
+    ind = (-np.array(coincidences)).argsort()[:10]
+    idx = (-better_scores[ind]).argsort()[:3]
+    return better_urls[ind[idx]], better_scores[ind[idx]]
 
-db = dataset.connect(db_file)
-table = db['recipes']
-data_base = setup_db(recipes, costs_table)
-print("done")
-current_recipe = read_scrapped_file(fname, region=(800, 801))
 
-score = recipe_loop(current_recipe, costs_table) 
-find_better(score, current_recipe[0], costs_table)
+current_recipe = read_scrapped_file(fname, region=(1219, 1220))[0]
+data_base, scores = setup_db(recipes, costs_table)
+
