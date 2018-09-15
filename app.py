@@ -38,15 +38,16 @@ def handle_get(id):
             scores=scores,
             lookup_table=costs_table)
 
+        suggestions = {"suggestion1": {"url": suggested_urls[0],
+                                       "score": suggested_scores[0]},
+                       "suggestion2": {"url": suggested_urls[1],
+                                       "score": suggested_scores[1]},
+                       "suggestion3": {"url": suggested_urls[2],
+                                       "score": suggested_scores[2]}}
+
         return jsonify({"Url": current_recipe["Url"],
                         "score": current_score,
-                        "suggestions": {"url1": suggested_urls[0],
-                                        "url2": suggested_urls[1],
-                                        "url3": suggested_urls[2]},
-                        "suggested_scores": {"score1": suggested_scores[0],
-                                             "score2": suggested_scores[1],
-                                             "score3": suggested_scores[2]}
-                        })
+                        "suggestions": suggestions})
 
 
 if __name__ == '__main__':
