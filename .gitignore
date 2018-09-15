@@ -333,3 +333,6 @@ ASALocalRun/
 
 # Custom
 DataScrapper/tools/scrappedData.txt
+
+# VS Code
+.vsCode
