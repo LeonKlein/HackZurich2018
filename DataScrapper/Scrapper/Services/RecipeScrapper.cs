@@ -17,6 +17,7 @@ namespace Scrapper.Services
         {
             string urlFormat = "https://www.allrecipes.com/recipe/{0}";
             string startId = (string)ConfigurationSettings.AppSettings["startId"];
+            string endId = (string)ConfigurationSettings.AppSettings["endId"];
 
             if (!int.TryParse(startId, out int id))
             {
@@ -24,16 +25,28 @@ namespace Scrapper.Services
                 Console.ReadKey();
             }
 
+            if (!int.TryParse(endId, out int eid))
+            {
+                Console.WriteLine("EndId is missing or not an integer !");
+                Console.ReadKey();
+            }
+
+            if(eid < id)
+            {
+                Console.WriteLine("EndId must be >= endId");
+                Console.ReadKey();
+            }
+
             Console.WriteLine("== Starting with id " + id);
 
             HttpClient client = new HttpClient();
 
-            for (; id < int.MaxValue; id++)
+            for (; id < eid; id++)
             {
                 try
                 {
                     string url = string.Format(urlFormat, id);
-                    var httpClient = new HttpClient();
+                    HttpClient httpClient = new HttpClient();
                     var response = await httpClient.GetAsync(new Uri(url));
 
                     if (response.IsSuccessStatusCode)
@@ -42,7 +55,8 @@ namespace Scrapper.Services
                         Console.WriteLine($"New page received for scrapping !");
                         try
                         {
-                            Scrap(url, content);
+                            //Scrap(url, content);
+                            LightScrap(url, content);
                         }
                         catch (Exception ex)
                         {
@@ -57,7 +71,7 @@ namespace Scrapper.Services
                 catch (Exception ex)
                 {
                     Console.Write("Error => " + ex.Message);
-                } 
+                }
             }
         }
 
@@ -68,6 +82,32 @@ namespace Scrapper.Services
                   .Descendants()
                   .Where(x => x.Attributes.Contains("class") && x.Attributes["class"].Value.Contains(name)).FirstOrDefault();
         }
+
+        private void LightScrap(string url, string content)
+        {
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(content);
+
+            try
+            {
+                LightScrappedPage lpage = new LightScrappedPage()
+                {
+                    Title = doc.GetElementbyId("recipe-main-content").InnerHtml,
+                    Url = url
+                };
+
+                using (StreamWriter w = File.AppendText("lightScrappedData.txt"))
+                {
+                    w.WriteLine(JsonConvert.SerializeObject(lpage) + ",");
+                    w.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write("Light scrapper error : " + ex.Message);
+            }
+        }
+
         private void Scrap(string url, string content)
         {
             HtmlDocument document = new HtmlDocument();

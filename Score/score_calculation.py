@@ -2,7 +2,7 @@ import json
 import csv
 import re
 import numpy as np
-from mixed_fractions import Mixed
+from Score.mixed_fractions import Mixed
 
 
 fname = "DataScrapper/tools/scrappedData.txt"
@@ -18,6 +18,7 @@ def read_scrapped_file(fname, region=None):
         return recipes
     else:
         return recipes[region[0]:region[1]]
+
 
 def write_score(fscore_name, url, score):
     data = {"Url": url, "Score": score}
@@ -43,7 +44,7 @@ def regex_matching(recipe):
 
     quantities = (r"(?P<unit>cups|cup|ounces|ounce|tablespoons|tablespoon|teaspoons"
                   r"|teaspoon|pounds|pound|pints|pint|pinches|pinch|gallons"
-                  r"|gallon|)")
+                  r"|gallon|cans|can|)")
     pattern = r'(?P<quantity>[0-9/ ]+)' \
         + quantities    \
         + r' (?P<ingredient>[a-zA-Z, ]+)'
@@ -63,7 +64,7 @@ def calc_weight(amount):
                   "tablespoons": 0.008, "ounce": 0.03, "ounces": 0.03, "pound": 0.45,
                   "pounds": 0.45, "pint": 0.45, "pints": 0.45, "teaspoon": 0,
                   "teaspoons": 0, "pinch": 0, "pinches": 0, "gallons": 3.8, "gallon": 3.8,
-                  "": 0.06}
+                  "": 0.06, "cans": 0.5, "can":0.5}
 
     if amount['unit'] in list(conversion.keys()):
         conversion_rate = conversion[amount['unit']]
@@ -94,22 +95,23 @@ def calculate_score(ingredients, lookup_table):
             """ with open(fref, mode='a', newline='') as csv_file:
                 fieldnames = [ing['ingredient'], value1, value2, value3]
                 writer = csv.writer(csv_file, delimiter=';')
-                writer.writerow(fieldnames) """
-                
+                writer.writerow(fieldnames)
+                 """
     return score
 
 
-recipes = read_scrapped_file(fname, region=(1, 3))
-costs_table = extract_cost_table(fref_name=fref)
+#recipes = read_scrapped_file(fname, region=(1000, 1200))
+#costs_table = extract_cost_table(fref_name=fref)
 
 
 def process_recipe(recipe, costs_table):
     ingreds = regex_matching(recipe)
     # Normalize by number of servings
     servings = recipe['Servings']
-    url = recipe['Url']
-    score = calculate_score(ingredients=ingreds, lookup_table=costs_table) / servings
-    return np.exp(- 0.5 * score)
+    score = calculate_score(ingredients=ingreds, lookup_table=costs_table)
+    score = score / servings
+    #return np.exp(- 0.5 * score)
+    return score
 
 
 # Loop over recipes
@@ -119,7 +121,4 @@ def recipe_loop(recipes, costs_table):
     for recipe in recipes:
         score = process_recipe(recipe, costs_table)
         all_scores.append(score)
-        # write_score(fscore, url, score)
-        #print(score)
-    return np.exp(- 0.5 * np.array(all_scores))
-
+    return np.exp(-2*np.array(all_scores))
