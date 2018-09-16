@@ -9,7 +9,7 @@ from Score.recommendations import (get_ingredient_lists_and_scores,
 app = Flask(__name__)
 
 fref = "Score/EnvironmentalData.csv"
-fname = "DataScrapper/tools/scrappedData.txt"
+fname = "DataScrapper/tools/newData.txt"
 
 recipes = read_scrapped_file(fname, region=None)
 urls = np.array([recipe["Url"] for recipe in recipes])
@@ -47,7 +47,8 @@ def handle_get(id):
 
         return jsonify({"Url": current_recipe["Url"],
                         "score": current_score,
-                        "suggestions": suggestions})
+                        "suggestions": suggestions
+                        })
 
 
 if __name__ == '__main__':

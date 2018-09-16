@@ -35,20 +35,17 @@ def find_better(
         # Find recipes with a better score and similar ingredients
 
     current_list = find_matches(current_recipe, lookup_table)
-    # current_score = find_current_score(current_recipe["Url"], recipes, scores)
     coincidences = []
-    coin = []
     better_data = ing_lists[scores > current_score]
     better_urls = urls[scores > current_score]
     better_scores = scores[scores > current_score]
     for ingredient_list in better_data:
-        coin.append(list(set(current_list) & set(ingredient_list)))
         coincidences.append(
             len(list(set(current_list) & set(ingredient_list))))
-    ind = (-np.array(coincidences)).argsort()[:10]
+    ind = (-np.array(coincidences)).argsort()[:8]
     idx = (-better_scores[ind]).argsort()[:3]
+    suggested_lists = better_data[ind[idx]]
+    # diffs = [get_diff(current_list, sugg_list) for sugg_list in suggested_lists]
     return better_urls[ind[idx]], better_scores[ind[idx]]
 
 
-#current_recipe = read_scrapped_file(fname, region=(1219, 1220))[0]
-#data_base, scores = setup_db(recipes, costs_table)
