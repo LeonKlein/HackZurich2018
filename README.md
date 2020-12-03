@@ -24,5 +24,5 @@ In the future (and this will be part of our business plan), we will provide some
 ## Getting started
 
 - First, you need to download the extension and add it to your Chrome browser (Edge, Opera, Firefox are on the way!). Just follow this tutorial:
-- Just go on any AllRecipes.com recipe and have a look at the right sidebar, there is a gauche (like on the thumbnail!), you can already use it, everything is orchestrated behind ;)
+- Just go on any www.AllRecipes.com recipe and have a look at the right sidebar, there is a gauche (like on the thumbnail!), you can already use it, everything is orchestrated behind ;)
 - Enjoy!
