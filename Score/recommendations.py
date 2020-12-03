@@ -1,4 +1,4 @@
-from Score.score_calculation import regex_matching, recipe_loop
+from score_calculation import regex_matching, recipe_loop
 import numpy as np
 
 

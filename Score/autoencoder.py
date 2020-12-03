@@ -51,31 +51,52 @@ def find_ingredients(ingredient_list_onehot, num_ingredients, possible_ingredien
 def back_one_hot(ingredient_list_onehot, possible_ingredients):
     return possible_ingredients[ingredient_list_onehot == 1]
 
-#def keep_good(ingredients_onehot, cost_table,):
+def keep_good(ingredient_lists, cost_table):
+    good_ingredient_lists = []
+    for ingred_list in ingredient_lists:
+        score = []
+        for ing in ingred_list:
+            score.append(cost_table[ing])
+        idx = (-np.array(score)).argsort()[:1]
+        new_list = list(np.copy(ingred_list))
+        if len(idx) > 0:
+            new_list.pop(idx[0])
+        good_ingredient_lists.append(new_list)
+    return good_ingredient_lists
 
+def calc_carb_loss(output, cost_table):
+    """Calculate carbon cost of output. This yields an additional loss."""
+    values = np.array(list(cost_table.values()), dtype=np.float32)
+    print(type(values))
+    return tf.reduce_sum(output * tf.convert_to_tensor(values, dtype=tf.float64))
 
 ingredients_onehot = np.array(one_hot_encode(ingredient_lists, possible_ingredients))
-print(ingredients_onehot.shape)
+
+
+good = np.array(keep_good(ingredient_lists, cost_table))
+good_onehot = one_hot_encode(good, possible_ingredients)
 
 
 split = int(0.8 * len(ingredients_onehot))
-train_x = np.array(ingredients_onehot[:split])
-validate_x = ingredients_onehot[split:]
+train_x = np.array(ingredients_onehot)[:split]
+train_l = np.array(good_onehot)[:split]
+validate_x = np.array(ingredients_onehot)[split:]
+validate_l = np.array(good_onehot)[split:]
 print(train_x.shape)
 
-epochs = 50
+epochs = 2
 
 
 possible = len(possible_ingredients)
 print(possible)
 
-dense_units1 = 100
+dense_units1 = 150
 dense_units2 = 300
 
-latent_units = 100
+latent_units = 200
 
 dense_units3 = 300
-dense_units4 = 100
+dense_units4 = 150
 output_units = possible
 
 
@@ -94,16 +115,15 @@ def autoenc_model_fn(features, mode):
     dropout2 = tf.layers.dropout(inputs=dense2, rate=0.5,
                                 training=mode == tf.estimator.ModeKeys.TRAIN)
 
-    # conditional autoencoder
-    latent_input = tf.concat([features["l"], dropout2], axis=-1)
 
     latent = tf.layers.dense(
-        inputs=latent_input, units=latent_units, activation=tf.nn.leaky_relu)
+        inputs=dropout2, units=latent_units, activation=tf.nn.leaky_relu)
     
     # Decoder
-
+    latent_output = tf.concat([features["l"], latent], axis=1)
+    
     dense3 = tf.layers.dense(
-        inputs=latent, units=dense_units3, activation=tf.nn.leaky_relu)
+        inputs=latent_output, units=dense_units3, activation=tf.nn.leaky_relu)
     dropout3 = tf.layers.dropout(inputs=dense3, rate=0.5,
                                 training=mode == tf.estimator.ModeKeys.TRAIN)
     
@@ -122,7 +142,7 @@ def autoenc_model_fn(features, mode):
         return tf.estimator.EstimatorSpec(mode=mode, predictions=output_layer)
     
     loss = tf.losses.mean_squared_error(
-        labels=features['x'], predictions=output_layer)
+        labels=features['x'], predictions=output_layer) + 0.01 * calc_carb_loss(output_layer, cost_table)
 
     if mode == tf.estimator.ModeKeys.TRAIN:
         optimizer = tf.train.AdamOptimizer(learning_rate=0.0001)
@@ -153,26 +173,26 @@ autoenc = tf.estimator.Estimator(model_fn=autoenc_model_fn, model_dir=out, confi
 
 
 train_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": train_x, "l": train_x},
+    x={"x": train_x, "l": train_l},
     batch_size=32,
     num_epochs=None,
     shuffle=True)
 
 train_eval_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": train_x, "l": train_x},
+    x={"x": train_x, "l": train_l},
     batch_size=100,
     num_epochs=1,
     shuffle=True)
 
 
 validate_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": validate_x, "l": validate_x},
+    x={"x": validate_x, "l": validate_l},
     num_epochs=1,
     shuffle=False)
 
 
 predict_input_fn = tf.estimator.inputs.numpy_input_fn(
-    x={"x": ingredients_onehot[:2], "l": ingredients_onehot[:2]},
+    x={"x": ingredients_onehot[60:62], "l": ingredients_onehot[60:62]},
     num_epochs=1,
     shuffle=False)
 
@@ -216,8 +236,10 @@ plt.show()
 #predict
 predictions = []
 prediction = autoenc.predict(input_fn=predict_input_fn)
-[print(predictions.append(pred)) for pred in prediction]
-print(find_ingredients(predictions[0], num_ingedients[0], possible_ingredients))
-print(ingredient_lists[0])
-print(find_ingredients(predictions[1], num_ingedients[1], possible_ingredients))
-print(ingredient_lists[1])
+[predictions.append(pred) for pred in prediction]
+print(find_ingredients(predictions[0], num_ingedients[60], possible_ingredients))
+print(ingredient_lists[60])
+print(good[60])
+print(find_ingredients(predictions[1], num_ingedients[61], possible_ingredients))
+print(ingredient_lists[61])
+print(good[61])

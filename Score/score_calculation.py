@@ -2,7 +2,7 @@ import json
 import csv
 import re
 import numpy as np
-from Score.mixed_fractions import Mixed
+from mixed_fractions import Mixed
 
 
 fname = "DataScrapper/tools/scrappedData.txt"
