@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Scrapper.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -11,40 +12,68 @@ using System.Threading.Tasks;
 namespace Scrapper.Services
 {
     public class RecipeScrapper
-    { 
+    {
         public async Task Run()
         {
-            string urlFormat = "https://www.allrecipes.com/recipe/{0}"; 
-            int id = 7750;
+            string urlFormat = "https://www.allrecipes.com/recipe/{0}";
+            string startId = (string)ConfigurationSettings.AppSettings["startId"];
+            string endId = (string)ConfigurationSettings.AppSettings["endId"];
+
+            if (!int.TryParse(startId, out int id))
+            {
+                Console.WriteLine("StartIdKey is missing or not an integer !");
+                Console.ReadKey();
+            }
+
+            if (!int.TryParse(endId, out int eid))
+            {
+                Console.WriteLine("EndId is missing or not an integer !");
+                Console.ReadKey();
+            }
+
+            if(eid < id)
+            {
+                Console.WriteLine("EndId must be >= endId");
+                Console.ReadKey();
+            }
+
+            Console.WriteLine("== Starting with id " + id);
 
             HttpClient client = new HttpClient();
 
-            for (; id < int.MaxValue; id++)
+            for (; id < eid; id++)
             {
-                string url = string.Format(urlFormat, id);
-                var httpClient = new HttpClient();
-                var response = await httpClient.GetAsync(new Uri(url));
-
-                if (response.IsSuccessStatusCode)
+                try
                 {
-                    var content = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine($"New page received for scrapping !");
-                    try
+                    string url = string.Format(urlFormat, id);
+                    HttpClient httpClient = new HttpClient();
+                    var response = await httpClient.GetAsync(new Uri(url));
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        Scrap(url, content);
+                        var content = await response.Content.ReadAsStringAsync();
+                        Console.WriteLine($"New page received for scrapping !");
+                        try
+                        {
+                            //Scrap(url, content);
+                            LightScrap(url, content);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Error => " + ex.Message);
+                        }
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        Console.WriteLine("Error => " + ex.Message);
+                        Console.Write($"/{id} not found (404)");
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.Write($"/{id} not found (404)");
+                    Console.Write("Error => " + ex.Message);
                 }
             }
         }
-
 
         private HtmlNode GetNodeByClass(HtmlDocument document, string name)
         {
@@ -52,6 +81,31 @@ namespace Scrapper.Services
                   .DocumentNode
                   .Descendants()
                   .Where(x => x.Attributes.Contains("class") && x.Attributes["class"].Value.Contains(name)).FirstOrDefault();
+        }
+
+        private void LightScrap(string url, string content)
+        {
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(content);
+
+            try
+            {
+                LightScrappedPage lpage = new LightScrappedPage()
+                {
+                    Title = doc.GetElementbyId("recipe-main-content").InnerHtml,
+                    Url = url
+                };
+
+                using (StreamWriter w = File.AppendText("lightScrappedData.txt"))
+                {
+                    w.WriteLine(JsonConvert.SerializeObject(lpage) + ",");
+                    w.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write("Light scrapper error : " + ex.Message);
+            }
         }
 
         private void Scrap(string url, string content)

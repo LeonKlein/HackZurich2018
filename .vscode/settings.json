@@ -1,0 +1,7 @@
+{
+    "python.pythonPath": "C:\\Users\\Leon\\Anaconda3\\envs\\tf\\python.exe",
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "terminal.integrated.cwd": "d:/Dokumente/WS17/HackZurich2018"
+}
